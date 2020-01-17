@@ -9,9 +9,18 @@ products = [
 ]
 
 describe 'Checkout' do
+  context 'basket' do
   it 'Should add an item to the basket' do
     co = Checkout.new
     co.scan(products[0])
     expect(co.basket[0]).to eq(products[0])
   end
+end
+
+  context 'total' do
+  it 'Should have a starting basket total of zero' do
+    co = Checkout.new
+    expect(co.total).to eq(0)
+  end
+end
 end
