@@ -1,7 +1,38 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/Kriss/Desktop/Ruby/projects/vinterior-tech-test/spec/checkout_spec.rb": [
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Kriss/Desktop/Ruby/projects/vinterior-tech-test/lib/checkout.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ]
     },
-    "timestamp": 1579296778
+    "timestamp": 1579297179
   }
 }
