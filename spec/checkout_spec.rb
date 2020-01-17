@@ -3,7 +3,8 @@
 require_relative '../lib/checkout.rb'
 
 promotions = [
-  { type: 'multibuy', product_code: 0o01, item_amount: 2, price: 8.50 }
+  { type: 'multibuy', product_code: 0o01, item_amount: 2, price: 8.50 },
+  { type: 'discount_total', discount: 0.1, min_total: 60 }
 ]
 
 products = [
@@ -42,6 +43,13 @@ describe 'Checkout' do
       @co.scan(products[0])
       @co.scan(products[2])
       expect(@co.total).to eq(36.95)
+    end
+
+    it 'Should apply a 10% discount if total above £60' do
+      @co.scan(products[0])
+      @co.scan(products[1])
+      @co.scan(products[2])
+      expect(@co.total).to eq(66.78)
     end
   end
 end

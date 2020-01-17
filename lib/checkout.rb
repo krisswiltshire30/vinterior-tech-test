@@ -17,20 +17,34 @@ class Checkout
       @total += item[:price]
     end
     promotion_checker
-    @total
+    @total.round(2)
   end
 
   def promotion_checker
     @promotional_rules.each do |promo|
-      multibuy(promo) if promo[:type] == 'multibuy'
+    if promo[:type] == 'multibuy'
+      multibuy(promo)
+    else promo[:type] == 'discount_total'
+      discount_total(promo)
+    end
     end
   end
 
   def multibuy(promo)
-    @basket.each do |item|
-      if item[:product_code] == promo[:product_code]
-        item[:price] = promo[:price]
+    discountable_items = @basket.select do |item|
+      item[:product_code] == promo[:product_code]
+    end
+
+    if discountable_items.count >= promo[:item_amount]
+      discountable_items.count.times do
+        @total -= discountable_items[0][:price]
+        @total += promo[:price]
       end
     end
   end
+
+  def discount_total(promo)
+    @total -= (@total * promo[:discount]) if @total >= promo[:min_total]
+  end
+
 end
