@@ -51,5 +51,13 @@ describe 'Checkout' do
       @co.scan(products[2])
       expect(@co.total).to eq(66.78)
     end
+
+    it 'Should apply both promotions to total if applicable' do
+      @co.scan(products[0])
+      @co.scan(products[1])
+      @co.scan(products[0])
+      @co.scan(products[2])
+      expect(@co.total).to eq(73.76)
+    end
   end
 end

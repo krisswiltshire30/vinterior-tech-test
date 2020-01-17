@@ -22,11 +22,11 @@ class Checkout
 
   def promotion_checker
     @promotional_rules.each do |promo|
-    if promo[:type] == 'multibuy'
-      multibuy(promo)
-    else promo[:type] == 'discount_total'
-      discount_total(promo)
-    end
+      if promo[:type] == 'multibuy'
+        multibuy(promo)
+      else promo[:type] == 'discount_total'
+           discount_total(promo)
+      end
     end
   end
 
@@ -46,5 +46,4 @@ class Checkout
   def discount_total(promo)
     @total -= (@total * promo[:discount]) if @total >= promo[:min_total]
   end
-
 end
