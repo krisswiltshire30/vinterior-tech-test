@@ -24,8 +24,8 @@ class Checkout
     @promotional_rules.each do |promo|
       if promo[:type] == 'multibuy'
         multibuy(promo)
-      else promo[:type] == 'discount_total'
-           discount_total(promo)
+      elsif promo[:type] == 'discount_total'
+        discount_total(promo)
       end
     end
   end
