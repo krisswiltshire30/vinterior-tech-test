@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Checkout
   attr_reader :basket, :total
   def initialize(basket = [], total = 0)
